@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunicação - Painel da Instituição</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background-color: #1a2a4f; }
+        .bg-card { background-color: #0e1a3c; }
+        .nav-item:hover { background-color: #1a2a4f; }
+        .nav-item.active { background-color: #3b82f6; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25); }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1a2a4f; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-[#e0f2f7]">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-card w-72 p-6 flex-col fixed h-full z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="flex items-center justify-center pb-6 border-b border-gray-700">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+            </div>
+            <nav class="mt-6 flex-1 custom-scrollbar overflow-y-auto pr-2">
+                <p class="text-xs text-gray-500 uppercase font-semibold mb-2">Principal</p>
+                <a href="dashboard.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-home w-6 text-center text-lg"></i>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="gerenciar_usuarios.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-users-cog w-6 text-center text-lg"></i>
+                    <span>Gestão de Usuários</span>
+                </a>
+                
+                <p class="text-xs text-gray-500 uppercase font-semibold mt-6 mb-2">Gestão</p>
+                <a href="gestao_pedagogica.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-book-reader w-6 text-center text-lg"></i>
+                    <span>Gestão Pedagógica</span>
+                </a>
+                <a href="relatorios.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-chart-pie w-6 text-center text-lg"></i>
+                    <span>Relatórios & Docs</span>
+                </a>
+                <a href="comunicacao.html" class="nav-item active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
+                    <i class="fas fa-bullhorn w-6 text-center text-lg"></i>
+                    <span>Comunicação</span>
+                </a>
+
+                <p class="text-xs text-gray-500 uppercase font-semibold mt-6 mb-2">Dados</p>
+                 <a href="anamnese_avaliacoes.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-file-medical w-6 text-center text-lg"></i>
+                    <span>Anamnese & Avaliações</span>
+                </a>
+                <a href="seguranca_acessos.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-shield-alt w-6 text-center text-lg"></i>
+                    <span>Segurança & Acessos</span>
+                </a>
+            </nav>
+            <div class="pt-4 border-t border-gray-700">
+                <a href="config.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-cog w-6 text-center text-lg"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="../auth.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </aside>
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 md:ml-72 p-8">
+            <header class="md:hidden flex justify-between items-center mb-8">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+                <button id="hamburger-btn" class="text-3xl text-white"><i class="fas fa-bars"></i></button>
+            </header>
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-white">Comunicação</h1>
+                <p class="text-blue-200 mt-1">Envie anúncios e comunicados para os utilizadores da plataforma.</p>
+            </div>
+            
+            <!-- Secção de Envio de Mensagem -->
+            <div class="bg-card p-6 rounded-xl border border-gray-700 mb-8">
+                <h2 class="text-xl font-bold mb-4">Enviar Novo Comunicado</h2>
+                <form class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-sm font-semibold text-blue-200">Enviar para:</label>
+                            <select class="w-full mt-1 p-2 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                                <option>Todos os Utilizadores</option>
+                                <option>Apenas Alunos</option>
+                                <option>Apenas Professores</option>
+                                <option>Apenas Profissionais de Saúde</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-sm font-semibold text-blue-200">Assunto</label>
+                            <input type="text" placeholder="Ex: Feriado escolar" class="w-full mt-1 p-2 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="text-sm font-semibold text-blue-200">Mensagem</label>
+                        <textarea rows="4" placeholder="Escreva a sua mensagem aqui..." class="w-full mt-1 p-2 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]"></textarea>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Enviar Comunicado
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Secção de Histórico de Comunicados -->
+            <div class="bg-card p-6 rounded-xl border border-gray-700">
+                <h2 class="text-2xl font-bold mb-4">Histórico de Comunicados</h2>
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="border-b border-gray-700">
+                                <th class="p-4">Assunto</th>
+                                <th class="p-4">Destinatário</th>
+                                <th class="p-4">Data de Envio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="p-4">Início do Período de Avaliações</td>
+                                <td class="p-4 text-gray-400">Professores e Profissionais</td>
+                                <td class="p-4 text-gray-400">15/07/2025</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4">Atualização da Plataforma</td>
+                                <td class="p-4 text-gray-400">Todos os Utilizadores</td>
+                                <td class="p-4 text-gray-400">10/07/2025</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Script para controlar o menu mobile
+    </script>
+</body>
+</html>

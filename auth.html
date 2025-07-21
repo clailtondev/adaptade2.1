@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-vindo ao Adaptade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background-color: #1a2a4f; }
+        .form-container { background-color: #0e1a3c; }
+        .form-container.hidden { display: none; }
+        .profile-btn { border: 2px solid #1a2a4f; transition: all 0.2s ease-in-out; }
+        .profile-btn:hover, .profile-btn.selected { border-color: #facc15; background-color: #3b82f6; transform: translateY(-4px); }
+        .input-field { background-color: #1a2a4f; border: 1px solid #3b82f6; }
+        .input-field:focus { outline: none; border-color: #facc15; box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.4); }
+        .btn-primary { background-color: #3b82f6; }
+        .btn-primary:hover { background-color: #2563eb; }
+    </style>
+</head>
+<body id="auth-page" class="flex items-center justify-center min-h-screen text-[#e0f2f7]">
+
+    <div class="w-full max-w-lg p-4">
+        <a href="index.html"><img src="assets/images/logo.png" alt="Logo Adaptade" class="h-16 mx-auto mb-8"></a>
+
+        <!-- Etapa 1: Seleção de Perfil -->
+        <div id="profile-selection" class="form-container rounded-xl p-8 text-center">
+            <h1 class="text-3xl font-bold mb-2">Acesse a Plataforma</h1>
+            <p class="text-blue-200 mb-8">Como você gostaria de entrar?</p>
+            <div class="grid grid-cols-2 gap-4">
+                <button data-profile="aluno" class="profile-btn p-4 rounded-lg flex flex-col items-center justify-center h-28"><i class="fas fa-user-graduate text-3xl mb-2"></i><span class="block font-semibold">Aluno</span></button>
+                <button data-profile="professor" class="profile-btn p-4 rounded-lg flex flex-col items-center justify-center h-28"><i class="fas fa-chalkboard-teacher text-3xl mb-2"></i><span class="block font-semibold">Professor</span></button>
+                <button data-profile="psicologo" class="profile-btn p-4 rounded-lg flex flex-col items-center justify-center h-28"><i class="fas fa-brain text-3xl mb-2"></i><span class="block font-semibold">Psicólogo</span></button>
+                <button data-profile="psicopedagogo" class="profile-btn p-4 rounded-lg flex flex-col items-center justify-center h-28"><i class="fas fa-user-doctor text-3xl mb-2"></i><span class="block font-semibold">Psicopedagogo</span></button>
+                <button data-profile="instituicao" class="profile-btn p-4 rounded-lg col-span-2"><i class="fas fa-school text-3xl mb-2"></i><span class="block font-semibold">Instituição</span></button>
+            </div>
+            <button id="next-to-login" class="btn-primary w-full py-3 rounded-lg mt-8 font-semibold opacity-50 cursor-not-allowed" disabled>Prosseguir</button>
+        </div>
+
+        <!-- Etapa 2: Formulário de Login -->
+        <div id="login-form-container" class="form-container rounded-xl p-8 hidden">
+            <button id="back-to-profiles" class="text-blue-200 hover:text-white mb-6"><i class="fas fa-arrow-left mr-2"></i>Voltar</button>
+            <h2 id="login-title" class="text-3xl font-bold text-center mb-8"></h2>
+            <form id="login-form" class="space-y-6">
+                <div><label for="email" class="block font-semibold mb-1">Email</label><input type="email" id="email" name="email" class="input-field w-full p-3 rounded-lg" required></div>
+                <div><label for="password" class="block font-semibold mb-1">Senha</label><input type="password" id="password" name="password" class="input-field w-full p-3 rounded-lg" required></div>
+                <div class="text-right"><a href="forgot_password.html" class="text-sm text-yellow-400 hover:underline">Esqueceu a senha?</a></div>
+                <button type="submit" id="login-button" class="btn-primary w-full py-3 rounded-lg font-semibold">Entrar</button>
+            </form>
+            <!-- NOVO CONTAINER PARA CADASTRO DE INSTITUIÇÃO -->
+            <div id="institution-register-link-container" class="text-center mt-6 hidden">
+                <p class="text-sm text-blue-200">A sua instituição ainda não tem uma conta?</p>
+                <a href="institution_register.html" class="font-semibold text-yellow-400 hover:underline">Cadastre-se aqui</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

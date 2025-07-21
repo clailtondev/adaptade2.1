@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinar IA - Adaptade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background-color: #1a2a4f; }
+        .bg-card { background-color: #0e1a3c; }
+        .nav-item:hover { background-color: #1a2a4f; }
+        .nav-item.active { background-color: #3b82f6; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25); }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1a2a4f; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+    </style>
+</head>
+<body class="text-[#e0f2f7]">
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-card w-72 p-6 flex-col fixed h-full z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="flex items-center justify-center pb-6 border-b border-gray-700"><a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a></div>
+            <nav class="mt-6 flex-1">
+                <a href="dashboard.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-home w-6 text-center text-lg"></i><span>Visão Geral</span></a>
+                <a href="train_ai.html" class="nav-item active flex items-center p-3 my-1 rounded-lg text-white font-semibold"><i class="fas fa-brain w-6 text-center text-lg"></i><span>Treinar IA</span></a>
+                <a href="intervention_plan.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-clipboard-list w-6 text-center text-lg"></i><span>Planos de Intervenção</span></a>
+                <a href="alunos_acompanhados.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-user-graduate w-6 text-center text-lg"></i><span>Alunos Acompanhados</span></a>
+                <a href="comunicacao.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-comments w-6 text-center text-lg"></i><span>Comunicação</span></a>
+                <a href="agenda.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-calendar-alt w-6 text-center text-lg"></i><span>Agenda</span></a>
+            </nav>
+            <div class="pt-4 border-t border-gray-700">
+                <a href="config.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-cog w-6 text-center text-lg"></i><span>Configurações</span></a>
+                <a href="../auth.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-sign-out-alt w-6 text-center text-lg"></i><span>Sair</span></a>
+            </div>
+        </aside>
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 md:ml-72 p-8">
+            <header class="md:hidden flex justify-between items-center mb-8"><a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a><button id="hamburger-btn" class="text-3xl text-white"><i class="fas fa-bars"></i></button></header>
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-white">Treinamento da IA</h1>
+                <p class="text-blue-200 mt-1">Adicione regras e princípios para guiar como a IA adapta as atividades.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Coluna de Adicionar Regra -->
+                <div class="bg-card p-6 rounded-xl border border-gray-700">
+                    <h2 class="text-2xl font-bold mb-4">Adicionar Nova Regra</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="font-bold block mb-1 text-blue-200">SE a condição for:</label>
+                            <input type="text" placeholder="Ex: Aluno com TDAH e atividade de leitura" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-1 text-blue-200">ENTÃO, a IA deve:</label>
+                            <textarea placeholder="Ex: Dividir o texto em parágrafos curtos, usar fontes maiores..." class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] h-24 focus:ring-2 focus:ring-yellow-400"></textarea>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg flex items-center"><i class="fas fa-save mr-2"></i>Salvar Regra</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- Coluna de Regras Ativas -->
+                <div class="bg-card p-6 rounded-xl border border-gray-700">
+                    <h2 class="text-2xl font-bold mb-4">Regras Ativas</h2>
+                    <div class="space-y-4 max-h-96 overflow-y-auto custom-scrollbar pr-2">
+                        <div class="p-4 bg-[#1a2a4f] rounded-lg">
+                            <p class="font-semibold">SE aluno com <span class="text-yellow-400">Dislexia</span>, ENTÃO usar fonte <span class="text-yellow-400">OpenDyslexic</span>.</p>
+                            <p class="text-xs text-gray-400 mt-1">Aplicável a todas as atividades de texto.</p>
+                        </div>
+                        <div class="p-4 bg-[#1a2a4f] rounded-lg">
+                            <p class="font-semibold">SE aluno com <span class="text-yellow-400">TDAH</span>, ENTÃO limitar atividades a <span class="text-yellow-400">10 minutos</span>.</p>
+                            <p class="text-xs text-gray-400 mt-1">Aplicável a todas as atividades interativas.</p>
+                        </div>
+                        <div class="p-4 bg-[#1a2a4f] rounded-lg">
+                            <p class="font-semibold">SE atividade de matemática para aluno com <span class="text-yellow-400">Discalculia</span>, ENTÃO usar <span class="text-yellow-400">objetos visuais</span>.</p>
+                            <p class="text-xs text-gray-400 mt-1">Aplicável a atividades de matemática.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Script para controlar o menu mobile
+    </script>
+</body>
+</html>

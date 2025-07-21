@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Painel - Adaptade</title>
+    <!-- Carregando o framework Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando a fonte Open Sans do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Carregando Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilização base seguindo o padrão de design definido */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a2a4f; /* Fundo Principal */
+        }
+        .bg-card {
+            background-color: #0e1a3c; /* Fundo Secundário */
+        }
+        .nav-item-desktop:hover {
+            background-color: #1a2a4f;
+        }
+        .nav-item-desktop.active {
+            background-color: #3b82f6; /* Azul Primário */
+            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25);
+        }
+        .nav-item-mobile.active {
+            color: #facc15; /* Amarelo Vibrante para item ativo no mobile */
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 20px; }
+    </style>
+</head>
+<body class="text-[#e0f2f7]">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar (Menu Lateral) - Visível em telas de desktop (lg e acima) -->
+        <aside class="bg-card w-64 p-6 flex-col h-screen fixed hidden lg:flex">
+            <!-- Header da Sidebar com Logo -->
+            <div class="flex items-center justify-center pb-6 border-b border-gray-700">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+            </div>
+
+            <!-- Navegação Principal -->
+            <nav class="mt-6 flex-1">
+                <a href="dashboard.html" class="nav-item-desktop active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
+                    <i class="fas fa-home w-6 text-center text-lg"></i><span>Minha Jornada</span>
+                </a>
+                <a href="atividades.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-puzzle-piece w-6 text-center text-lg"></i><span>Atividades</span>
+                </a>
+                <a href="jogos.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-gamepad w-6 text-center text-lg"></i><span>Jogos Educativos</span>
+                </a>
+                <a href="criativo.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-palette w-6 text-center text-lg"></i><span>Cantinho Criativo</span>
+                </a>
+                <a href="agenda.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-calendar-alt w-6 text-center text-lg"></i><span>Agenda</span>
+                </a>
+            </nav>
+
+            <!-- Footer da Sidebar -->
+            <div class="pt-4 border-t border-gray-700">
+                <a href="config.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-cog w-6 text-center text-lg"></i><span>Configurações</span>
+                </a>
+                <a href="../index.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i><span>Sair</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 lg:ml-64 pb-24 lg:pb-8 p-4 sm:p-8">
+            <!-- Header com Perfil do Aluno -->
+            <header class="flex items-center justify-between mb-8">
+                <div>
+                    <h1 class="text-2xl sm:text-4xl font-bold text-white">Minha Jornada</h1>
+                    <p class="text-blue-200 mt-1 text-sm sm:text-base">Continue assim, você está indo muito bem!</p>
+                </div>
+                <div class="flex items-center">
+                    <span class="font-semibold mr-4 hidden sm:block">João Silva</span>
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-400 flex items-center justify-center text-2xl font-bold text-black">
+                        JS
+                    </div>
+                </div>
+            </header>
+
+            <!-- Seção de Progresso (Gamificação) -->
+            <div class="bg-card p-6 rounded-xl border border-gray-700 mb-8">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="font-bold text-lg text-yellow-400">Nível 5 - Explorador</span>
+                    <span class="text-sm text-blue-300">Próximo Nível: Aventureiro</span>
+                </div>
+                <div class="w-full bg-[#1a2a4f] rounded-full h-4">
+                    <div class="bg-gradient-to-r from-blue-500 to-green-400 h-4 rounded-full" style="width: 60%"></div>
+                </div>
+                <p class="text-xs text-right mt-1 text-blue-300">600 / 1000 XP</p>
+            </div>
+
+            <!-- Seção de Atividades e Foco da Semana -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="md:col-span-2 bg-card p-5 rounded-xl border border-gray-700">
+                    <h3 class="font-bold text-lg mb-4">Recomendado para Você</h3>
+                    <div class="space-y-4">
+                        <a href="atividades.html" class="flex items-center p-4 bg-[#1a2a4f] rounded-lg hover:bg-gray-800 transition-colors">
+                            <i class="fas fa-book-open text-purple-400 text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-semibold">Atividade de Leitura</p>
+                                <p class="text-xs text-blue-300">Continue a fábula "A Cigarra e a Formiga"</p>
+                            </div>
+                        </a>
+                         <a href="jogos.html" class="flex items-center p-4 bg-[#1a2a4f] rounded-lg hover:bg-gray-800 transition-colors">
+                            <i class="fas fa-calculator text-green-400 text-2xl mr-4"></i>
+                            <div>
+                                <p class="font-semibold">Jogo de Matemática</p>
+                                <p class="text-xs text-blue-300">Desafios de soma e subtração</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="bg-card p-5 rounded-xl border border-yellow-400/50 flex flex-col items-center text-center">
+                     <i class="fas fa-bullseye text-3xl text-yellow-400 mb-3"></i>
+                    <h3 class="font-bold text-lg mb-2">Foco da Semana</h3>
+                    <p class="text-sm text-blue-200">Melhorar a interpretação de textos curtos.</p>
+                </div>
+            </div>
+
+            <!-- Seção de Conquistas -->
+            <div>
+                <h2 class="text-2xl font-bold mb-4">Conquistas Desbloqueadas</h2>
+                <div class="flex space-x-4 overflow-x-auto pb-4 custom-scrollbar">
+                    <div class="text-center flex-shrink-0 w-24"><div class="w-20 h-20 mx-auto rounded-full bg-yellow-500 flex items-center justify-center text-4xl"><i class="fas fa-star"></i></div><p class="text-xs mt-2 font-semibold">Leitor Veloz</p></div>
+                    <div class="text-center flex-shrink-0 w-24"><div class="w-20 h-20 mx-auto rounded-full bg-gray-400 flex items-center justify-center text-4xl"><i class="fas fa-calculator"></i></div><p class="text-xs mt-2 font-semibold">Mestre dos Números</p></div>
+                    <div class="text-center flex-shrink-0 w-24 opacity-40"><div class="w-20 h-20 mx-auto rounded-full bg-gray-700 flex items-center justify-center text-4xl"><i class="fas fa-lock"></i></div><p class="text-xs mt-2 font-semibold">Artista Criativo</p></div>
+                    <div class="text-center flex-shrink-0 w-24 opacity-40"><div class="w-20 h-20 mx-auto rounded-full bg-gray-700 flex items-center justify-center text-4xl"><i class="fas fa-lock"></i></div><p class="text-xs mt-2 font-semibold">Gênio da Lógica</p></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Barra de Navegação Inferior - Visível em telas mobile (abaixo de lg) -->
+        <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-gray-700 flex justify-around p-2">
+            <a href="dashboard.html" class="nav-item-mobile active flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
+                <i class="fas fa-home text-xl"></i><span class="text-xs mt-1">Jornada</span>
+            </a>
+            <a href="atividades.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
+                <i class="fas fa-puzzle-piece text-xl"></i><span class="text-xs mt-1">Atividades</span>
+            </a>
+            <a href="jogos.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
+                <i class="fas fa-gamepad text-xl"></i><span class="text-xs mt-1">Jogos</span>
+            </a>
+            <a href="criativo.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
+                <i class="fas fa-palette text-xl"></i><span class="text-xs mt-1">Criativo</span>
+            </a>
+            <a href="agenda.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
+                <i class="fas fa-calendar-alt text-xl"></i><span class="text-xs mt-1">Agenda</span>
+            </a>
+        </nav>
+    </div>
+</body>
+</html>

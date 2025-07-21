@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Painel do Psicólogo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background-color: #1a2a4f; }
+        .bg-card { background-color: #0e1a3c; }
+        .nav-item:hover { background-color: #1a2a4f; }
+        .nav-item.active { background-color: #3b82f6; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25); }
+        .toggle-bg:after { content: ''; position: absolute; top: 2px; left: 2px; background: white; border-radius: 50%; width: 1.25rem; height: 1.25rem; transition: transform 0.2s; }
+        input:checked + .toggle-bg { background-color: #3b82f6; }
+        input:checked + .toggle-bg:after { transform: translateX(100%); }
+    </style>
+</head>
+<body class="text-[#e0f2f7]">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-card w-72 p-6 flex-col fixed h-full z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="flex items-center justify-center pb-6 border-b border-gray-700">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+            </div>
+            <nav class="mt-6 flex-1">
+                <a href="dashboard.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-home w-6 text-center text-lg"></i>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="sessoes.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-calendar-check w-6 text-center text-lg"></i>
+                    <span>Sessões</span>
+                </a>
+                <a href="alunos_vinculados.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-user-graduate w-6 text-center text-lg"></i>
+                    <span>Alunos Vinculados</span>
+                </a>
+                <a href="comunicacao.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-comments w-6 text-center text-lg"></i>
+                    <span>Comunicação</span>
+                </a>
+            </nav>
+            <div class="pt-4 border-t border-gray-700">
+                <a href="config.html" class="nav-item active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
+                    <i class="fas fa-cog w-6 text-center text-lg"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="../auth.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </aside>
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 md:ml-72 p-8">
+            <header class="md:hidden flex justify-between items-center mb-8">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+                <button id="hamburger-btn" class="text-3xl text-white"><i class="fas fa-bars"></i></button>
+            </header>
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold text-white">Configurações</h1>
+                <p class="text-blue-200 mt-1">Gerencie as suas informações de perfil, segurança e preferências.</p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto space-y-8">
+                <!-- Secção Meu Perfil -->
+                <div class="bg-card p-6 rounded-xl border border-gray-700">
+                    <h2 class="text-2xl font-bold mb-6 border-b border-gray-700 pb-4">Meu Perfil</h2>
+                    <form class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="font-bold block mb-1">Nome Completo</label>
+                                <input type="text" value="Dr. Carlos Andrade" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                            </div>
+                            <div>
+                                <label class="font-bold block mb-1">Email</label>
+                                <input type="email" value="carlos.andrade@email.com" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Salvar Alterações</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Secção Segurança -->
+                <div class="bg-card p-6 rounded-xl border border-gray-700">
+                    <h2 class="text-2xl font-bold mb-6 border-b border-gray-700 pb-4">Segurança</h2>
+                    <form class="space-y-4 max-w-md">
+                        <div>
+                            <label class="font-bold block mb-1">Senha Atual</label>
+                            <input type="password" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-1">Nova Senha</label>
+                            <input type="password" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                        </div>
+                        <div>
+                            <label class="font-bold block mb-1">Confirmar Nova Senha</label>
+                            <input type="password" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6]">
+                        </div>
+                        <div class="flex justify-end">
+                            <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Alterar Senha</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Secção Notificações -->
+                <div class="bg-card p-6 rounded-xl border border-gray-700">
+                    <h2 class="text-2xl font-bold mb-6 border-b border-gray-700 pb-4">Preferências de Notificação</h2>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="font-semibold">Novos relatórios na Caixa de Entrada</p>
+                                <p class="text-sm text-blue-200">Receber um email quando um novo relatório for enviado.</p>
+                            </div>
+                            <label class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="sr-only peer" checked>
+                                <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Script para controlar o menu mobile
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja um Parceiro - Adaptade</title>
+    <!-- Carregando o framework Tailwind CSS diretamente via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando a fonte Open Sans do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Carregando Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilização base seguindo o padrão de design definido */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a2a4f; /* Fundo Principal */
+        }
+        .bg-card {
+            background-color: #0e1a3c; /* Fundo Secundário */
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 text-[#e0f2f7]">
+
+    <main class="w-full max-w-2xl">
+        <!-- O card principal, agora com as cores do padrão definido -->
+        <div class="bg-card p-8 rounded-xl border border-gray-700 shadow-2xl">
+            <div class="text-center mb-8">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Logo Adaptade" class="h-12 mx-auto mb-4"></a>
+                <h1 class="text-3xl font-bold text-white">Torne-se um Parceiro Adaptade</h1>
+                <p class="text-blue-200 mt-2">Preencha o formulário abaixo para iniciar o processo de validação.</p>
+            </div>
+
+            <form id="partner-form" class="space-y-6">
+                <div>
+                    <label for="fullName" class="font-bold block mb-2 text-blue-200">Nome Completo</label>
+                    <input type="text" id="fullName" name="fullName" class="w-full p-3 bg-[#1a2a4f] text-white rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="Seu nome como aparece em documentos oficiais" required>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="profession" class="font-bold block mb-2 text-blue-200">Sua Profissão</label>
+                        <select id="profession" name="profession" class="w-full p-3 bg-[#1a2a4f] text-white rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" required>
+                            <option value="" disabled selected>Selecione uma opção</option>
+                            <option value="psicologo">Psicólogo(a)</option>
+                            <option value="psicopedagogo">Psicopedagogo(a)</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="registerNumber" class="font-bold block mb-2 text-blue-200">Nº de Registro Profissional</label>
+                        <input type="text" id="registerNumber" name="registerNumber" class="w-full p-3 bg-[#1a2a4f] text-white rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="Ex: CRP 00/12345" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="font-bold block mb-2 text-blue-200">E-mail para Contato</label>
+                    <input type="email" id="email" name="email" class="w-full p-3 bg-[#1a2a4f] text-white rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="seu.email@exemplo.com" required>
+                </div>
+
+                <!-- NOVO CAMPO PARA ANEXAR CURRÍCULO -->
+                <div>
+                    <label class="font-bold block mb-2 text-blue-200">Anexar Currículo (PDF)</label>
+                    <label for="resume-upload" class="w-full flex items-center p-3 bg-[#1a2a4f] text-blue-300 rounded-lg border border-dashed border-[#3b82f6] cursor-pointer hover:bg-gray-800">
+                        <i class="fas fa-paperclip mr-3"></i>
+                        <span id="resume-label">Clique para selecionar um arquivo...</span>
+                    </label>
+                    <input type="file" id="resume-upload" name="resume" class="hidden" accept=".pdf">
+                </div>
+
+                <div>
+                    <label for="message" class="font-bold block mb-2 text-blue-200">Mensagem (Opcional)</label>
+                    <textarea id="message" name="message" rows="4" class="w-full p-3 bg-[#1a2a4f] text-white rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="Fale um pouco sobre sua experiência..."></textarea>
+                </div>
+
+                <div class="pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <a href="index.html" class="text-yellow-400 hover:underline text-sm order-2 md:order-1">
+                        <i class="fas fa-arrow-left mr-2"></i>Voltar para a página inicial
+                    </a>
+                    <button type="submit" class="bg-[#3b82f6] hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg text-lg w-full md:w-auto order-1 md:order-2 transition-transform transform hover:scale-105">
+                        Enviar Aplicação
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Modal de Notificação -->
+    <div id="notification-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-card p-8 rounded-xl border border-gray-700 text-center max-w-sm shadow-2xl">
+            <h2 id="notification-title" class="text-2xl font-bold mb-4 text-yellow-400"></h2>
+            <p id="notification-message" class="text-blue-200 mb-6"></p>
+            <button id="notification-close-btn" class="bg-[#3b82f6] hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">OK</button>
+        </div>
+    </div>
+
+    <script>
+        // Simulação de envio e notificação
+        const form = document.getElementById('partner-form');
+        const modal = document.getElementById('notification-modal');
+        const modalTitle = document.getElementById('notification-title');
+        const modalMessage = document.getElementById('notification-message');
+        const closeModalBtn = document.getElementById('notification-close-btn');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            modalTitle.textContent = 'Aplicação Enviada!';
+            modalMessage.textContent = 'Sua aplicação foi enviada com sucesso. Entraremos em contato em breve. Obrigado!';
+            modal.classList.remove('hidden');
+            this.reset();
+            // Reseta o nome do arquivo no label
+            document.getElementById('resume-label').textContent = 'Clique para selecionar um arquivo...';
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Lógica para mostrar o nome do arquivo selecionado
+        const resumeUpload = document.getElementById('resume-upload');
+        const resumeLabel = document.getElementById('resume-label');
+        resumeUpload.addEventListener('change', () => {
+            if (resumeUpload.files.length > 0) {
+                resumeLabel.textContent = resumeUpload.files[0].name;
+            } else {
+                resumeLabel.textContent = 'Clique para selecionar um arquivo...';
+            }
+        });
+    </script>
+</body>
+</html>

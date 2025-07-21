@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Turmas - Painel do Professor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; background-color: #1a2a4f; }
+        .bg-card { background-color: #0e1a3c; }
+        .nav-item:hover { background-color: #1a2a4f; }
+        .nav-item.active { background-color: #3b82f6; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="text-[#e0f2f7]">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside id="sidebar" class="bg-card w-72 p-6 flex-col fixed h-full z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+            <div class="flex items-center justify-center pb-6 border-b border-gray-700">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+            </div>
+            <nav class="mt-6 flex-1">
+                <a href="dashboard.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-home w-6 text-center text-lg"></i>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="adapt_activity.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-magic-sparkles w-6 text-center text-lg"></i>
+                    <span>Adaptar Atividade</span>
+                </a>
+                <a href="minhas_turmas.html" class="nav-item active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
+                    <i class="fas fa-users w-6 text-center text-lg"></i>
+                    <span>Minhas Turmas</span>
+                </a>
+                <a href="biblioteca.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-book-bookmark w-6 text-center text-lg"></i>
+                    <span>Biblioteca</span>
+                </a>
+                <a href="comunicacao.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-comments w-6 text-center text-lg"></i>
+                    <span>Comunicação</span>
+                </a>
+            </nav>
+            <div class="pt-4 border-t border-gray-700">
+                <a href="config.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-cog w-6 text-center text-lg"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="../auth.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </aside>
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 md:ml-72 p-8">
+            <header class="md:hidden flex justify-between items-center mb-8">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+                <button id="hamburger-btn" class="text-3xl text-white"><i class="fas fa-bars"></i></button>
+            </header>
+            <div class="flex justify-between items-center mb-8">
+                <div>
+                    <h1 class="text-4xl font-bold text-white">Minhas Turmas</h1>
+                    <p class="text-blue-200 mt-1">Visualize e gira os alunos das suas turmas.</p>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Accordion para Turma 5º Ano B -->
+                <div class="bg-card rounded-xl border border-gray-700">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                        <span class="text-2xl font-bold">Turma 5º Ano B</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6">
+                        <div class="py-4 border-t border-gray-700">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr>
+                                        <th class="p-2">Aluno</th>
+                                        <th class="p-2">Última Atividade</th>
+                                        <th class="p-2">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-[#1a2a4f]">
+                                        <td class="p-2">João Oliveira</td>
+                                        <td class="p-2 text-gray-400">19/07/2025</td>
+                                        <td class="p-2"><a href="adapt_activity.html" class="text-blue-400 hover:underline">Adaptar Atividade</a></td>
+                                    </tr>
+                                     <tr class="hover:bg-[#1a2a4f]">
+                                        <td class="p-2">Ana Clara</td>
+                                        <td class="p-2 text-gray-400">18/07/2025</td>
+                                        <td class="p-2"><a href="adapt_activity.html" class="text-blue-400 hover:underline">Adaptar Atividade</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Accordion para Turma 4º Ano A -->
+                <div class="bg-card rounded-xl border border-gray-700">
+                    <button class="accordion-header w-full flex justify-between items-center p-6 text-left">
+                        <span class="text-2xl font-bold">Turma 4º Ano A</span>
+                        <i class="fas fa-chevron-down transition-transform"></i>
+                    </button>
+                    <div class="accordion-content px-6">
+                        <div class="py-4 border-t border-gray-700">
+                             <table class="w-full text-left">
+                                <thead>
+                                    <tr>
+                                        <th class="p-2">Aluno</th>
+                                        <th class="p-2">Última Atividade</th>
+                                        <th class="p-2">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="hover:bg-[#1a2a4f]">
+                                        <td class="p-2">Maria Souza</td>
+                                        <td class="p-2 text-gray-400">19/07/2025</td>
+                                        <td class="p-2"><a href="adapt_activity.html" class="text-blue-400 hover:underline">Adaptar Atividade</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        // Script para controlar o menu mobile
+        document.addEventListener('DOMContentLoaded', () => {
+            const sidebar = document.getElementById('sidebar');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+
+            const openMenu = () => { if (sidebar) sidebar.classList.remove('-translate-x-full'); if (mobileOverlay) mobileOverlay.classList.remove('hidden'); };
+            const closeMenu = () => { if (sidebar) sidebar.classList.add('-translate-x-full'); if (mobileOverlay) mobileOverlay.classList.add('hidden'); };
+
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+            // Script para o Accordion
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const content = header.nextElementSibling;
+                    const icon = header.querySelector('i');
+
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

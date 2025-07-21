@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registo de Instituição - Adaptade</title>
+    <!-- Carregando o framework Tailwind CSS diretamente via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando a fonte Open Sans do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Carregando Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilização base seguindo o padrão de design definido */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a2a4f; /* Fundo Principal */
+        }
+        .bg-card {
+            background-color: #0e1a3c; /* Fundo Secundário */
+        }
+        .input-form {
+            background-color: #1a2a4f;
+            border: 1px solid #3b82f6;
+        }
+        .input-form:focus {
+            outline: none;
+            border-color: #facc15;
+            box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.4);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 text-[#e0f2f7]">
+
+    <main class="w-full max-w-3xl">
+        <div class="bg-card p-8 rounded-xl border border-gray-700 shadow-2xl">
+            <div class="text-center mb-8">
+                <a href="index.html"><img src="assets/images/logo.png" alt="Logo Adaptade" class="h-12 mx-auto mb-4"></a>
+                <h1 class="text-3xl font-bold text-white">Registo de Nova Instituição</h1>
+                <p class="text-blue-200 mt-2">Preencha os dados abaixo para criar a conta da sua instituição.</p>
+            </div>
+
+            <form id="institution-register-form" class="space-y-6">
+                <div>
+                    <label for="institutionName" class="font-bold block mb-2 text-blue-200">Nome da Instituição</label>
+                    <input type="text" id="institutionName" class="input-form w-full p-3 rounded-lg" required>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="cnpj" class="font-bold block mb-2 text-blue-200">CNPJ</label>
+                        <input type="text" id="cnpj" class="input-form w-full p-3 rounded-lg" placeholder="00.000.000/0000-00" required>
+                    </div>
+                    <div>
+                        <label for="inepCode" class="font-bold block mb-2 text-blue-200">Código INEP da Escola</label>
+                        <input type="text" id="inepCode" class="input-form w-full p-3 rounded-lg" placeholder="Código de 8 dígitos" required>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="institutionType" class="font-bold block mb-2 text-blue-200">Tipo de Instituição</label>
+                        <select id="institutionType" class="input-form w-full p-3 rounded-lg" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="publica">Pública</option>
+                            <option value="privada">Privada</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="phone" class="font-bold block mb-2 text-blue-200">Telefone de Contato</label>
+                        <input type="tel" id="phone" class="input-form w-full p-3 rounded-lg" placeholder="(00) 00000-0000" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="responsibleName" class="font-bold block mb-2 text-blue-200">Nome do Responsável</label>
+                    <input type="text" id="responsibleName" class="input-form w-full p-3 rounded-lg" required>
+                </div>
+
+                <div>
+                    <label for="email" class="font-bold block mb-2 text-blue-200">E-mail Principal da Instituição</pre>
+                    <input type="email" id="email" class="input-form w-full p-3 rounded-lg" placeholder="contato@suainstituicao.com" required>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="password" class="font-bold block mb-2 text-blue-200">Crie uma Senha</label>
+                        <input type="password" id="password" class="input-form w-full p-3 rounded-lg" required>
+                    </div>
+                    <div>
+                        <label for="confirmPassword" class="font-bold block mb-2 text-blue-200">Confirme a Senha</label>
+                        <input type="password" id="confirmPassword" class="input-form w-full p-3 rounded-lg" required>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <a href="auth.html" class="text-yellow-400 hover:underline text-sm order-2 md:order-1">
+                        <i class="fas fa-arrow-left mr-2"></i>Já tem uma conta? Voltar para o Login
+                    </a>
+                    <button type="submit" class="btn-primary font-bold py-3 px-6 rounded-lg text-lg w-full md:w-auto order-1 md:order-2 transition-transform transform hover:scale-105">
+                        Finalizar Registo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

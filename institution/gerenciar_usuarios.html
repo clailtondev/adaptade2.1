@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão de Usuários - Adaptade</title>
+    <!-- Carregando o framework Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carregando a fonte Open Sans do Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Carregando Font Awesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilização base seguindo o padrão de design definido */
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #1a2a4f; /* Fundo Principal */
+        }
+        .bg-card {
+            background-color: #0e1a3c; /* Fundo Secundário */
+        }
+        .nav-item:hover {
+            background-color: #1a2a4f;
+        }
+        .nav-item.active {
+            background-color: #3b82f6; /* Azul Primário */
+            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 8px; height: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #1a2a4f; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        .tab-btn.active {
+            border-color: #3b82f6;
+            color: #fff;
+        }
+        /* Estilo para campos dinâmicos do formulário */
+        .dynamic-field.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-[#e0f2f7]">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar (Menu Lateral) -->
+        <aside id="sidebar" class="bg-card w-72 p-6 flex-col fixed h-full z-40 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out">
+            <!-- Header da Sidebar com Logo -->
+            <div class="flex items-center justify-center pb-6 border-b border-gray-700">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+            </div>
+
+            <!-- Navegação Principal -->
+            <nav class="mt-6 flex-1 custom-scrollbar overflow-y-auto pr-2">
+                <p class="text-xs text-gray-500 uppercase font-semibold mb-2">Principal</p>
+                <a href="dashboard.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-home w-6 text-center text-lg"></i>
+                    <span>Visão Geral</span>
+                </a>
+                <a href="gerenciar_usuarios.html" class="nav-item active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
+                    <i class="fas fa-users-cog w-6 text-center text-lg"></i>
+                    <span>Gestão de Usuários</span>
+                </a>
+                
+                <p class="text-xs text-gray-500 uppercase font-semibold mt-6 mb-2">Gestão</p>
+                <a href="#" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-book-reader w-6 text-center text-lg"></i>
+                    <span>Gestão Pedagógica</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-calendar-alt w-6 text-center text-lg"></i>
+                    <span>Agenda & Calendário</span>
+                </a>
+                <a href="relatorios.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-chart-pie w-6 text-center text-lg"></i>
+                    <span>Relatórios & Docs</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-bullhorn w-6 text-center text-lg"></i>
+                    <span>Comunicação</span>
+                </a>
+
+                <p class="text-xs text-gray-500 uppercase font-semibold mt-6 mb-2">Dados</p>
+                 <a href="#" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-file-medical w-6 text-center text-lg"></i>
+                    <span>Anamnese & Avaliações</span>
+                </a>
+                <a href="#" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-shield-alt w-6 text-center text-lg"></i>
+                    <span>Segurança & Acessos</span>
+                </a>
+            </nav>
+
+            <!-- Footer da Sidebar -->
+            <div class="pt-4 border-t border-gray-700">
+                <a href="config.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-cog w-6 text-center text-lg"></i>
+                    <span>Configurações</span>
+                </a>
+                <a href="../auth.html" class="nav-item flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
+                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i>
+                    <span>Sair</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Overlay para o menu mobile -->
+        <div id="mobile-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden md:hidden"></div>
+
+        <!-- Conteúdo Principal -->
+        <main class="flex-1 md:ml-72 p-8">
+            <!-- Header Mobile -->
+            <header class="md:hidden flex justify-between items-center mb-8">
+                <a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a>
+                <button id="hamburger-btn" class="text-3xl text-white"><i class="fas fa-bars"></i></button>
+            </header>
+
+            <!-- Título e Ações da Página -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <div>
+                    <h1 class="text-4xl font-bold text-white">Gestão de Usuários</h1>
+                    <p class="text-blue-200 mt-1">Adicione, edite e visualize todos os usuários da plataforma.</p>
+                </div>
+                <button id="add-user-btn" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg mt-4 md:mt-0 flex items-center">
+                    <i class="fas fa-user-plus mr-2"></i> Cadastrar Novo Usuário
+                </button>
+            </div>
+
+            <!-- Abas de Navegação de Perfis -->
+            <div class="mb-6 border-b border-gray-700">
+                <nav class="flex space-x-4" aria-label="Tabs">
+                    <button data-tab="alunos" class="tab-btn active text-white py-3 px-4 font-semibold border-b-2">Alunos</button>
+                    <button data-tab="professores" class="tab-btn text-blue-200 py-3 px-4 font-semibold border-b-2 border-transparent hover:border-gray-500">Professores</button>
+                    <button data-tab="profissionais" class="tab-btn text-blue-200 py-3 px-4 font-semibold border-b-2 border-transparent hover:border-gray-500">Profissionais</button>
+                </nav>
+            </div>
+
+            <!-- Conteúdo das Abas -->
+            <div id="tab-content">
+                <!-- Tabela de Alunos (Visível por padrão) -->
+                <div id="alunos-tab" class="tab-pane">
+                    <div class="bg-card rounded-xl border border-gray-700">
+                        <div class="p-4 overflow-x-auto custom-scrollbar">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="p-4">Nome</th><th class="p-4">Email</th><th class="p-4">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-4">João Silva</td>
+                                        <td class="p-4 text-gray-400">joao.silva@email.com</td>
+                                        <td class="p-4 space-x-2"><button class="text-yellow-400 hover:text-yellow-300"><i class="fas fa-pencil-alt"></i></button><button class="text-red-500 hover:text-red-400"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tabela de Professores (Escondida) -->
+                <div id="professores-tab" class="tab-pane hidden">
+                     <div class="bg-card rounded-xl border border-gray-700">
+                        <div class="p-4 overflow-x-auto custom-scrollbar">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="p-4">Nome</th><th class="p-4">Email</th><th class="p-4">Disciplina</th><th class="p-4">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-4">Prof. Luzardo Mendes</td>
+                                        <td class="p-4 text-gray-400">luzardo.mendes@email.com</td>
+                                        <td class="p-4 text-gray-400">Matemática</td>
+                                        <td class="p-4 space-x-2"><button class="text-yellow-400 hover:text-yellow-300"><i class="fas fa-pencil-alt"></i></button><button class="text-red-500 hover:text-red-400"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                </div>
+                <!-- Tabela de Profissionais (Escondida) -->
+                <div id="profissionais-tab" class="tab-pane hidden">
+                     <div class="bg-card rounded-xl border border-gray-700">
+                        <div class="p-4 overflow-x-auto custom-scrollbar">
+                            <table class="w-full text-left">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="p-4">Nome</th><th class="p-4">Email</th><th class="p-4">Especialidade</th><th class="p-4">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="p-4">Dra. Letícia Farias</td>
+                                        <td class="p-4 text-gray-400">leticia.farias@email.com</td>
+                                        <td class="p-4 text-gray-400">Psicóloga</td>
+                                        <td class="p-4 space-x-2"><button class="text-yellow-400 hover:text-yellow-300"><i class="fas fa-pencil-alt"></i></button><button class="text-red-500 hover:text-red-400"><i class="fas fa-trash-alt"></i></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal para Cadastrar Novo Usuário (Aprimorado) -->
+    <div id="user-modal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+        <div class="bg-card rounded-xl border border-gray-700 w-full max-w-2xl p-8">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-white">Cadastrar Novo Usuário</h2>
+                <button id="close-modal-btn" class="text-gray-400 hover:text-white text-2xl">&times;</button>
+            </div>
+            <form id="user-form" class="space-y-4">
+                <div>
+                    <label for="profile" class="block mb-1 font-semibold text-blue-200">Perfil do Usuário</label>
+                    <select id="profile" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400">
+                        <option value="aluno">Aluno</option>
+                        <option value="professor">Professor</option>
+                        <option value="psicologo">Psicólogo</option>
+                        <option value="psicopedagogo">Psicopedagogo</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="fullName" class="block mb-1 font-semibold text-blue-200">Nome Completo</label>
+                    <input type="text" id="fullName" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" required>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="cpf" class="block mb-1 font-semibold text-blue-200">CPF</label>
+                        <input type="text" id="cpf" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="000.000.000-00" required>
+                    </div>
+                     <div>
+                        <label for="birthDate" class="block mb-1 font-semibold text-blue-200">Data de Nascimento</label>
+                        <input type="date" id="birthDate" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" required>
+                    </div>
+                </div>
+                <div>
+                    <label for="email" class="block mb-1 font-semibold text-blue-200">Email</label>
+                    <input type="email" id="email" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" required>
+                </div>
+                
+                <!-- Campos Dinâmicos -->
+                <div id="teacher-fields" class="dynamic-field hidden space-y-4">
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="mainSubject" class="block mb-1 font-semibold text-blue-200">Disciplina Principal</label>
+                            <input type="text" id="mainSubject" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="Ex: Português">
+                        </div>
+                         <div>
+                            <label for="assignedClass" class="block mb-1 font-semibold text-blue-200">Turma Responsável</label>
+                            <input type="text" id="assignedClass" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="Ex: 5º Ano B">
+                        </div>
+                    </div>
+                </div>
+                <div id="professional-fields" class="dynamic-field hidden">
+                    <label for="professionalId" class="block mb-1 font-semibold text-blue-200">Nº de Registro Profissional (CRP, etc.)</label>
+                    <input type="text" id="professionalId" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-[#3b82f6] focus:ring-2 focus:ring-yellow-400" placeholder="Ex: CRP 00/12345">
+                </div>
+
+                <div>
+                    <label for="password" class="block mb-1 font-semibold text-blue-200">Senha Provisória</label>
+                    <div class="flex items-center space-x-2 relative">
+                        <input type="text" id="password" class="w-full p-3 bg-[#1a2a4f] rounded-lg border border-gray-600" readonly>
+                        <button type="button" id="generate-pass-btn" class="p-3 bg-yellow-500 text-black rounded-lg" title="Gerar Nova Senha"><i class="fas fa-sync-alt"></i></button>
+                        <button type="button" id="copy-pass-btn" class="p-3 bg-gray-600 text-white rounded-lg" title="Copiar Senha"><i class="fas fa-copy"></i></button>
+                        <span id="copy-feedback" class="absolute right-12 -top-6 text-xs bg-green-500 text-white px-2 py-1 rounded opacity-0 transition-opacity duration-300">Copiado!</span>
+                    </div>
+                </div>
+                <div class="pt-6 flex justify-end space-x-4">
+                    <button type="button" id="cancel-btn" class="bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-lg">Cancelar</button>
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Salvar Usuário</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Script do Menu Mobile
+            const sidebar = document.getElementById('sidebar');
+            const hamburgerBtn = document.getElementById('hamburger-btn');
+            const mobileOverlay = document.getElementById('mobile-overlay');
+            const openMenu = () => { if (sidebar) sidebar.classList.remove('-translate-x-full'); if (mobileOverlay) mobileOverlay.classList.remove('hidden'); };
+            const closeMenu = () => { if (sidebar) sidebar.classList.add('-translate-x-full'); if (mobileOverlay) mobileOverlay.classList.add('hidden'); };
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+            if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+
+            // Script das Abas (Tabs)
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    const tab = button.dataset.tab;
+                    tabPanes.forEach(pane => {
+                        if (pane.id === `${tab}-tab`) {
+                            pane.classList.remove('hidden');
+                        } else {
+                            pane.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // Script do Modal de Cadastro
+            const userModal = document.getElementById('user-modal');
+            const addUserBtn = document.getElementById('add-user-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const cancelBtn = document.getElementById('cancel-btn');
+            const userForm = document.getElementById('user-form');
+            const passwordInput = document.getElementById('password');
+            const generatePassBtn = document.getElementById('generate-pass-btn');
+            const copyPassBtn = document.getElementById('copy-pass-btn');
+            const copyFeedback = document.getElementById('copy-feedback');
+            const profileSelect = document.getElementById('profile');
+            const teacherFields = document.getElementById('teacher-fields');
+            const professionalFields = document.getElementById('professional-fields');
+
+            const openModal = () => {
+                generatePassword();
+                updateDynamicFields();
+                userModal.classList.remove('hidden');
+            };
+            const closeModal = () => {
+                userForm.reset();
+                userModal.classList.add('hidden');
+            };
+
+            const generatePassword = () => {
+                const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&';
+                let password = '';
+                for (let i = 0; i < 12; i++) {
+                    password += chars.charAt(Math.floor(Math.random() * chars.length));
+                }
+                passwordInput.value = password;
+            };
+
+            const copyPassword = () => {
+                passwordInput.select();
+                document.execCommand('copy');
+                copyFeedback.classList.remove('opacity-0');
+                setTimeout(() => {
+                    copyFeedback.classList.add('opacity-0');
+                }, 1500);
+            };
+
+            const updateDynamicFields = () => {
+                const selectedProfile = profileSelect.value;
+                teacherFields.classList.add('hidden');
+                professionalFields.classList.add('hidden');
+
+                if (selectedProfile === 'professor') {
+                    teacherFields.classList.remove('hidden');
+                } else if (selectedProfile === 'psicologo' || selectedProfile === 'psicopedagogo') {
+                    professionalFields.classList.remove('hidden');
+                }
+            };
+
+            if (addUserBtn) addUserBtn.addEventListener('click', openModal);
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+            if (generatePassBtn) generatePassBtn.addEventListener('click', generatePassword);
+            if (copyPassBtn) copyPassBtn.addEventListener('click', copyPassword);
+            if (profileSelect) profileSelect.addEventListener('change', updateDynamicFields);
+
+            if (userForm) {
+                userForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    console.log('Novo usuário salvo!');
+                    closeModal();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
