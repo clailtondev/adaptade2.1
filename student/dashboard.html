@@ -14,7 +14,8 @@
         .bg-card { background-color: #0e1a3c; }
         .nav-item-desktop:hover { background-color: #1a2a4f; }
         .nav-item-desktop.active { background-color: #3b82f6; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.25); }
-        .nav-item-mobile.active { color: #facc15; }
+        .nav-item-mobile.active i { color: #facc15; }
+        .nav-item-mobile.active span { color: #facc15; }
         .custom-scrollbar::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 20px; }
@@ -101,7 +102,10 @@
                     </div>
                 </div>
                  <div class="bg-card p-5 rounded-xl border border-gray-700">
-                    <h3 class="font-bold text-lg mb-4">Última Conquista</h3>
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="font-bold text-lg">Conquistas Recentes</h3>
+                        <a href="jornada.html" class="text-sm text-yellow-400 hover:underline">Ver Todas</a>
+                    </div>
                     <div class="flex items-center p-4 bg-[#1a2a4f] rounded-lg">
                         <i class="fas fa-star text-yellow-400 text-2xl mr-4"></i>
                         <div>
@@ -117,8 +121,8 @@
         <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-gray-700 flex justify-around p-1">
             <a href="dashboard.html" class="nav-item-mobile active flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-bullseye text-xl"></i><span class="text-[10px] mt-1">Foco</span></a>
             <a href="atividades.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-puzzle-piece text-xl"></i><span class="text-[10px] mt-1">Atividades</span></a>
-            <a href="jornada.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-trophy text-xl"></i><span class="text-[10px] mt-1">Conquistas</span></a>
             <a href="jogos.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-gamepad text-xl"></i><span class="text-[10px] mt-1">Jogos</span></a>
+            <a href="criativo.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-palette text-xl"></i><span class="text-[10px] mt-1">Criativo</span></a>
             <a href="agenda.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-calendar-alt text-xl"></i><span class="text-[10px] mt-1">Agenda</span></a>
         </nav>
     </div>
@@ -131,24 +135,7 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const profileBtn = document.getElementById('profile-btn');
-            const profileMenu = document.getElementById('profile-menu');
-            if (profileBtn) {
-                profileBtn.addEventListener('click', (event) => {
-                    event.stopPropagation();
-                    profileMenu.classList.toggle('hidden');
-                });
-            }
-            document.addEventListener('click', (event) => {
-                if (profileMenu && !profileMenu.classList.contains('hidden') && !profileBtn.contains(event.target)) {
-                    profileMenu.classList.add('hidden');
-                }
-            });
-        });
-    </script>
-    <!-- Script do Plugin VLibras que faz a mágica acontecer -->
+    <script src="../js/main.js"></script>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
       new window.VLibras.Widget('https://vlibras.gov.br/app');
