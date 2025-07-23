@@ -21,43 +21,34 @@
 <body class="text-[#e0f2f7]">
     <div class="flex min-h-screen">
         <!-- Sidebar (Desktop) -->
-        <aside class="bg-card w-64 p-6 flex-col h-screen fixed hidden lg:flex">
+        <aside id="sidebar" class="bg-card w-64 p-6 flex-col h-screen fixed hidden lg:flex">
             <div class="flex items-center justify-center pb-6 border-b border-gray-700"><a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a></div>
             <nav class="mt-6 flex-1">
-                <a href="dashboard.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-home w-6 text-center text-lg"></i><span>Minha Jornada</span>
-                </a>
-                <a href="atividades.html" class="nav-item-desktop active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
-                    <i class="fas fa-puzzle-piece w-6 text-center text-lg"></i><span>Atividades</span>
-                </a>
-                <a href="jogos.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-gamepad w-6 text-center text-lg"></i><span>Jogos Educativos</span>
-                </a>
-                <a href="criativo.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-palette w-6 text-center text-lg"></i><span>Cantinho Criativo</span>
-                </a>
-                <a href="agenda.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-calendar-alt w-6 text-center text-lg"></i><span>Agenda</span>
-                </a>
+                <a href="dashboard.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-bullseye w-6 text-center text-lg"></i><span>Meu Foco</span></a>
+                <a href="atividades.html" class="nav-item-desktop active flex items-center p-3 my-1 rounded-lg text-white font-semibold"><i class="fas fa-puzzle-piece w-6 text-center text-lg"></i><span>Atividades</span></a>
+                <a href="jornada.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-trophy w-6 text-center text-lg"></i><span>Conquistas</span></a>
+                <a href="jogos.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-gamepad w-6 text-center text-lg"></i><span>Jogos Educativos</span></a>
+                <a href="criativo.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-palette w-6 text-center text-lg"></i><span>Cantinho Criativo</span></a>
+                <a href="agenda.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-calendar-alt w-6 text-center text-lg"></i><span>Agenda</span></a>
             </nav>
             <div class="pt-4 border-t border-gray-700">
-                <a href="config.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-cog w-6 text-center text-lg"></i><span>Configurações</span>
-                </a>
-                <a href="../auth.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i><span>Sair</span>
-                </a>
+                <a href="config.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-cog w-6 text-center text-lg"></i><span>Configurações</span></a>
+                <a href="../index.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-sign-out-alt w-6 text-center text-lg"></i><span>Sair</span></a>
             </div>
         </aside>
-
+        
         <!-- Conteúdo Principal -->
         <main class="flex-1 lg:ml-64 pb-24 lg:pb-8 p-4 sm:p-8">
+            <!-- Header com Perfil Clicável -->
             <header class="flex items-center justify-between mb-8">
-                <div>
-                    <h1 class="text-2xl sm:text-4xl font-bold text-white">Minhas Atividades</h1>
-                    <p class="text-blue-200 mt-1 text-sm sm:text-base">Aqui estão todas as suas tarefas.</p>
+                <div><h1 class="text-2xl sm:text-4xl font-bold text-white">Minhas Atividades</h1><p class="text-blue-200 mt-1 text-sm sm:text-base">Aqui estão todas as suas tarefas.</p></div>
+                <div class="relative">
+                    <button id="profile-btn" class="flex items-center"><span class="font-semibold mr-4 hidden sm:block">João Silva</span><div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-400 flex items-center justify-center text-2xl font-bold text-black flex-shrink-0">JS</div></button>
+                    <div id="profile-menu" class="absolute top-full right-0 mt-2 w-48 bg-card rounded-lg shadow-xl border border-gray-700 z-50 hidden">
+                        <a href="config.html" class="flex items-center p-3 hover:bg-[#1a2a4f] rounded-t-lg"><i class="fas fa-cog w-6 text-center text-blue-300"></i><span class="ml-2">Configurações</span></a>
+                        <a href="../index.html" class="flex items-center p-3 hover:bg-[#1a2a4f] rounded-b-lg"><i class="fas fa-sign-out-alt w-6 text-center text-blue-300"></i><span class="ml-2">Sair</span></a>
+                    </div>
                 </div>
-                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-400 flex items-center justify-center text-2xl font-bold text-black">JS</div>
             </header>
 
             <!-- Abas de Filtro -->
@@ -83,29 +74,9 @@
                                     <p class="text-sm text-blue-200">Leia a fábula "A Cigarra e a Formiga" e responda às perguntas.</p>
                                     <p class="text-xs text-gray-500 mt-1">Enviado por Prof. Luzardo</p>
                                 </div>
-                                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto">
+                                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto self-start sm:self-center">
                                     <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Iniciar Online</button>
                                     <button class="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg"><i class="fas fa-print"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <h2 class="text-xl font-bold mb-4">Próximas Atividades</h2>
-                        <div class="space-y-6">
-                             <!-- Card de Atividade com Progresso -->
-                            <div class="bg-card p-5 rounded-xl border border-gray-700 flex flex-col sm:flex-row gap-5">
-                                <div class="w-16 h-16 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center text-3xl flex-shrink-0"><i class="fas fa-calculator"></i></div>
-                                <div class="flex-1">
-                                    <h3 class="font-bold text-lg">Desafios de Matemática</h3>
-                                    <p class="text-sm text-blue-200">Complete a série de exercícios de soma.</p>
-                                    <div class="w-full bg-[#1a2a4f] rounded-full h-2 mt-2">
-                                        <div class="bg-green-500 h-2 rounded-full" style="width: 33%"></div>
-                                    </div>
-                                    <p class="text-xs text-gray-400 mt-1">1 de 3 lições concluídas</p>
-                                </div>
-                                <div class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 w-full sm:w-auto self-end">
-                                    <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg">Continuar</button>
                                 </div>
                             </div>
                         </div>
@@ -129,40 +100,32 @@
         </main>
 
         <!-- Barra de Navegação Inferior (Mobile) -->
-        <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-gray-700 flex justify-around p-2">
-            <a href="dashboard.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-home text-xl"></i><span class="text-xs mt-1">Jornada</span>
-            </a>
-            <a href="atividades.html" class="nav-item-mobile active flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-puzzle-piece text-xl"></i><span class="text-xs mt-1">Atividades</span>
-            </a>
-            <a href="jogos.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-gamepad text-xl"></i><span class="text-xs mt-1">Jogos</span>
-            </a>
-            <a href="criativo.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-palette text-xl"></i><span class="text-xs mt-1">Criativo</span>
-            </a>
-            <a href="agenda.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-calendar-alt text-xl"></i><span class="text-xs mt-1">Agenda</span>
-            </a>
+        <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-gray-700 flex justify-around p-1">
+            <a href="dashboard.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-bullseye text-xl"></i><span class="text-[10px] mt-1">Foco</span></a>
+            <a href="atividades.html" class="nav-item-mobile active flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-puzzle-piece text-xl"></i><span class="text-[10px] mt-1">Atividades</span></a>
+            <a href="jornada.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-trophy text-xl"></i><span class="text-[10px] mt-1">Conquistas</span></a>
+            <a href="jogos.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-gamepad text-xl"></i><span class="text-[10px] mt-1">Jogos</span></a>
+            <a href="agenda.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-calendar-alt text-xl"></i><span class="text-[10px] mt-1">Agenda</span></a>
         </nav>
     </div>
-
+    
+    <!-- VLibras Widget -->
+    <div id="vlibras-widget" vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+    
+    <script src="../js/main.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script>
     <script>
+        // Script para controlar as abas
         document.addEventListener('DOMContentLoaded', () => {
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabPanes = document.querySelectorAll('.tab-pane');
 
             tabButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Desativa todas as abas
                     tabButtons.forEach(btn => btn.classList.remove('active'));
-                    // Ativa a aba clicada
                     button.classList.add('active');
-                    
                     const tab = button.dataset.tab;
-                    
-                    // Mostra o conteúdo da aba correta
                     tabPanes.forEach(pane => {
                         if (pane.id === `${tab}-tab`) {
                             pane.classList.remove('hidden');

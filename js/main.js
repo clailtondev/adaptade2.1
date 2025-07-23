@@ -121,3 +121,69 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
     }
 });
+/*
+ * main.js
+ * Este arquivo centraliza todo o JavaScript essencial para a navegação
+ * e interatividade básica do site Adaptade.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- LÓGICA PARA A TELA DE AUTENTICAÇÃO (auth.html) ---
+    const authPage = document.getElementById('auth-page');
+    if (authPage) {
+        // ... (código da tela de autenticação que já fizemos) ...
+    }
+
+    // --- LÓGICA PARA NAVEGAÇÃO DOS PAINÉIS (TODOS OS dashboards) ---
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        // Ativa o link do menu da página atual
+        const currentPage = window.location.pathname.split('/').pop();
+        const navLinks = document.querySelectorAll('.nav-item-desktop'); // Usando a classe específica do desktop
+        
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute('href').split('/').pop();
+            if (linkPage === currentPage) {
+                link.classList.add('active');
+                link.classList.remove('text-blue-200', 'hover:text-white');
+                link.classList.add('text-white', 'font-semibold');
+            } else {
+                link.classList.remove('active', 'text-white', 'font-semibold');
+                link.classList.add('text-blue-200', 'hover:text-white');
+            }
+        });
+
+        // Controle do menu mobile (se aplicável a outros painéis)
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+
+        const openMenu = () => {
+            if (sidebar) sidebar.classList.remove('-translate-x-full');
+            if (mobileOverlay) mobileOverlay.classList.remove('hidden');
+        };
+
+        const closeMenu = () => {
+            if (sidebar) sidebar.classList.add('-translate-x-full');
+            if (mobileOverlay) mobileOverlay.classList.add('hidden');
+        };
+
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', openMenu);
+        if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenu);
+    }
+
+    // --- LÓGICA PARA O MENU DE PERFIL (Painel do Aluno) ---
+    const profileBtn = document.getElementById('profile-btn');
+    const profileMenu = document.getElementById('profile-menu');
+    if (profileBtn) {
+        profileBtn.addEventListener('click', (event) => {
+            event.stopPropagation();
+            profileMenu.classList.toggle('hidden');
+        });
+    }
+    // Fecha o menu se clicar fora dele
+    document.addEventListener('click', (event) => {
+        if (profileMenu && !profileMenu.classList.contains('hidden') && !profileBtn.contains(event.target)) {
+            profileMenu.classList.add('hidden');
+        }
+    });
+});

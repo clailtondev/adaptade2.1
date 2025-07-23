@@ -22,47 +22,40 @@
 
     <div class="flex min-h-screen">
         <!-- Sidebar (Desktop) -->
-        <aside class="bg-card w-64 p-6 flex-col h-screen fixed hidden lg:flex">
+        <aside id="sidebar" class="bg-card w-64 p-6 flex-col h-screen fixed hidden lg:flex">
             <div class="flex items-center justify-center pb-6 border-b border-gray-700"><a href="dashboard.html"><img src="../assets/images/logo.png" alt="Logo Adaptade" class="h-10"></a></div>
             <nav class="mt-6 flex-1">
-                <a href="dashboard.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-home w-6 text-center text-lg"></i><span>Minha Jornada</span>
-                </a>
-                <a href="atividades.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-puzzle-piece w-6 text-center text-lg"></i><span>Atividades</span>
-                </a>
-                <a href="jornada.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-trophy w-6 text-center text-lg"></i><span>Conquistas</span>
-                </a>
-                <a href="jogos.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-gamepad w-6 text-center text-lg"></i><span>Jogos Educativos</span>
-                </a>
-                <a href="criativo.html" class="nav-item-desktop active flex items-center p-3 my-1 rounded-lg text-white font-semibold">
-                    <i class="fas fa-palette w-6 text-center text-lg"></i><span>Cantinho Criativo</span>
-                </a>
-                <a href="agenda.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-calendar-alt w-6 text-center text-lg"></i><span>Agenda</span>
-                </a>
+                <a href="dashboard.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-bullseye w-6 text-center text-lg"></i><span>Meu Foco</span></a>
+                <a href="atividades.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-puzzle-piece w-6 text-center text-lg"></i><span>Atividades</span></a>
+                <a href="jornada.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-trophy w-6 text-center text-lg"></i><span>Conquistas</span></a>
+                <a href="jogos.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-gamepad w-6 text-center text-lg"></i><span>Jogos Educativos</span></a>
+                <a href="criativo.html" class="nav-item-desktop active flex items-center p-3 my-1 rounded-lg text-white font-semibold"><i class="fas fa-palette w-6 text-center text-lg"></i><span>Cantinho Criativo</span></a>
+                <a href="agenda.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-calendar-alt w-6 text-center text-lg"></i><span>Agenda</span></a>
             </nav>
             <div class="pt-4 border-t border-gray-700">
-                <a href="config.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-cog w-6 text-center text-lg"></i><span>Configurações</span>
-                </a>
-                <a href="../auth.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white">
-                    <i class="fas fa-sign-out-alt w-6 text-center text-lg"></i><span>Sair</span>
-                </a>
+                <a href="config.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-cog w-6 text-center text-lg"></i><span>Configurações</span></a>
+                <a href="../index.html" class="nav-item-desktop flex items-center p-3 my-1 rounded-lg text-blue-200 hover:text-white"><i class="fas fa-sign-out-alt w-6 text-center text-lg"></i><span>Sair</span></a>
             </div>
         </aside>
-
+        
         <!-- Conteúdo Principal -->
         <main class="flex-1 lg:ml-64 pb-24 lg:pb-8 p-4 sm:p-8">
+            <!-- Header com Perfil Clicável -->
             <header class="flex items-center justify-between mb-8">
-                <div>
-                    <h1 class="text-2xl sm:text-4xl font-bold text-white">Cantinho Criativo</h1>
-                    <p class="text-blue-200 mt-1 text-sm sm:text-base">Use a sua imaginação para desenhar e escrever.</p>
+                <div><h1 class="text-2xl sm:text-4xl font-bold text-white">Cantinho Criativo</h1><p class="text-blue-200 mt-1 text-sm sm:text-base">Use a sua imaginação para desenhar e escrever.</p></div>
+                <div class="relative">
+                    <button id="profile-btn" class="flex items-center"><span class="font-semibold mr-4 hidden sm:block">João Silva</span><div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-400 flex items-center justify-center text-2xl font-bold text-black flex-shrink-0">JS</div></button>
+                    <div id="profile-menu" class="absolute top-full right-0 mt-2 w-48 bg-card rounded-lg shadow-xl border border-gray-700 z-50 hidden">
+                        <a href="config.html" class="flex items-center p-3 hover:bg-[#1a2a4f] rounded-t-lg"><i class="fas fa-cog w-6 text-center text-blue-300"></i><span class="ml-2">Configurações</span></a>
+                        <a href="../index.html" class="flex items-center p-3 hover:bg-[#1a2a4f] rounded-b-lg"><i class="fas fa-sign-out-alt w-6 text-center text-blue-300"></i><span class="ml-2">Sair</span></a>
+                    </div>
                 </div>
-                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-yellow-400 flex items-center justify-center text-2xl font-bold text-black">JS</div>
             </header>
+
+            <div class="bg-card p-6 rounded-xl border border-yellow-400/50 mb-8">
+                <h3 class="font-bold text-lg mb-2">Sugestão do Dia</h3>
+                <p class="text-sm text-blue-200">"Desenhe como seria o seu super-herói favorito." - Enviado por Prof. Ana</p>
+            </div>
 
             <div class="grid grid-cols-1 xl:grid-cols-2 gap-8">
                 <!-- Seção de Desenho -->
@@ -74,7 +67,10 @@
                             <label for="color-picker" class="font-semibold">Cor:</label>
                             <input type="color" id="color-picker" value="#000000" class="w-10 h-10 rounded-lg">
                         </div>
-                        <button id="clear-canvas" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg"><i class="fas fa-trash-alt mr-2"></i>Limpar</button>
+                        <div>
+                            <button id="clear-canvas" class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg"><i class="fas fa-trash-alt"></i></button>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg ml-2"><i class="fas fa-save mr-2"></i>Salvar</button>
+                        </div>
                     </div>
                 </div>
                 <!-- Seção de Escrita Criativa -->
@@ -89,88 +85,87 @@
         </main>
 
         <!-- Barra de Navegação Inferior (Mobile) -->
-        <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-gray-700 flex justify-around p-2">
-            <a href="dashboard.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-home text-xl"></i><span class="text-xs mt-1">Jornada</span>
-            </a>
-            <a href="atividades.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-puzzle-piece text-xl"></i><span class="text-xs mt-1">Atividades</span>
-            </a>
-            <a href="jornada.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-trophy text-xl"></i><span class="text-xs mt-1">Conquistas</span>
-            </a>
-            <a href="jogos.html" class="nav-item-mobile flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-gamepad text-xl"></i><span class="text-xs mt-1">Jogos</span>
-            </a>
-            <a href="criativo.html" class="nav-item-mobile active flex flex-col items-center text-blue-300 w-1/5 pt-1 pb-1">
-                <i class="fas fa-palette text-xl"></i><span class="text-xs mt-1">Criativo</span>
-            </a>
+        <nav class="lg:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-gray-700 flex justify-around p-1">
+            <a href="dashboard.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-bullseye text-xl"></i><span class="text-[10px] mt-1">Foco</span></a>
+            <a href="atividades.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-puzzle-piece text-xl"></i><span class="text-[10px] mt-1">Atividades</span></a>
+            <a href="jornada.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-trophy text-xl"></i><span class="text-[10px] mt-1">Conquistas</span></a>
+            <a href="jogos.html" class="nav-item-mobile flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-gamepad text-xl"></i><span class="text-[10px] mt-1">Jogos</span></a>
+            <a href="criativo.html" class="nav-item-mobile active flex flex-1 flex-col items-center justify-center text-blue-300 pt-2 pb-1"><i class="fas fa-palette text-xl"></i><span class="text-[10px] mt-1">Criativo</span></a>
         </nav>
     </div>
-
+    
+    <!-- VLibras Widget -->
+    <div id="vlibras-widget" vw class="enabled"><div vw-access-button class="active"></div><div vw-plugin-wrapper><div class="vw-plugin-top-wrapper"></div></div></div>
+    
+    <script src="../js/main.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script> new window.VLibras.Widget('https://vlibras.gov.br/app'); </script>
     <script>
+        // Script específico para o canvas de desenho
         document.addEventListener('DOMContentLoaded', () => {
             const canvas = document.getElementById('drawing-canvas');
+            if (!canvas) return;
+
             const ctx = canvas.getContext('2d');
             const colorPicker = document.getElementById('color-picker');
             const clearButton = document.getElementById('clear-canvas');
 
-            // Ajustar o tamanho do canvas para corresponder ao seu elemento
             canvas.width = canvas.offsetWidth;
             canvas.height = canvas.offsetHeight;
-
             let drawing = false;
 
+            function getMousePos(e) {
+                const rect = canvas.getBoundingClientRect();
+                return {
+                    x: e.clientX - rect.left,
+                    y: e.clientY - rect.top
+                };
+            }
+            function getTouchPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                return {
+                    x: e.touches[0].clientX - rect.left,
+                    y: e.touches[0].clientY - rect.top
+                };
+            }
+
             function startPosition(e) {
+                e.preventDefault();
                 drawing = true;
                 draw(e);
             }
-
             function endPosition() {
                 drawing = false;
                 ctx.beginPath();
             }
-
             function draw(e) {
                 if (!drawing) return;
-
-                e.preventDefault(); // Prevenir scroll em dispositivos móveis
-
+                e.preventDefault();
+                
                 ctx.lineWidth = 5;
                 ctx.lineCap = 'round';
                 ctx.strokeStyle = colorPicker.value;
 
-                let x, y;
-                // Obter coordenadas para mouse e toque
-                if (e.type === 'touchmove') {
-                    x = e.touches[0].clientX - canvas.offsetLeft;
-                    y = e.touches[0].clientY - canvas.offsetTop;
-                } else {
-                    x = e.clientX - canvas.offsetLeft;
-                    y = e.clientY - canvas.offsetTop;
-                }
+                let pos = e.touches ? getTouchPos(e) : getMousePos(e);
                 
-                ctx.lineTo(x, y);
+                ctx.lineTo(pos.x, pos.y);
                 ctx.stroke();
                 ctx.beginPath();
-                ctx.moveTo(x, y);
+                ctx.moveTo(pos.x, pos.y);
             }
             
-            function clearCanvas() {
+            clearButton.addEventListener('click', () => {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
+            });
 
-            // Event Listeners para Mouse
+            // Eventos de Mouse
             canvas.addEventListener('mousedown', startPosition);
             canvas.addEventListener('mouseup', endPosition);
             canvas.addEventListener('mousemove', draw);
-
-            // Event Listeners para Toque
+            // Eventos de Toque
             canvas.addEventListener('touchstart', startPosition);
             canvas.addEventListener('touchend', endPosition);
             canvas.addEventListener('touchmove', draw);
-
-            clearButton.addEventListener('click', clearCanvas);
         });
     </script>
 </body>
